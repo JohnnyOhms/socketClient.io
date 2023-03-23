@@ -20,14 +20,15 @@ const options = [
   { value: "string", label: "String" },
   { value: "number", label: "Number" },
   { value: "object", label: "Object" },
-  { value: "json", label: "JSON" },
   { value: "array", label: "Array" },
 ];
 
 const EmitEvent = () => {
   const [selected, setSelected] = useState<object | null>(null);
+  const [code, setCode] = useState("");
   const onChange = useCallback((value: string, viewUpdate: any) => {
     console.log(value);
+    setCode(value);
   }, []);
 
   return (
@@ -47,6 +48,7 @@ const EmitEvent = () => {
         <input
           type="text"
           placeholder=""
+          required
           style={{ width: "100%", padding: "10px", borderRadius: "5px" }}
         />
       </Stack>
@@ -77,12 +79,16 @@ const EmitEvent = () => {
 
       <div style={{ marginTop: "20px" }}>
         <CodeMirror
-          value=".log('hello world!');"
+          value={code}
           height="200px"
-          // extensions={[javascript({ jsx: true })]}
+          extensions={[javascript({ jsx: true })]}
           onChange={onChange}
           theme="dark"
         />
+      </div>
+
+      <div className="btn-emit">
+        <button className="emit-btn">Emit</button>
       </div>
     </div>
   );

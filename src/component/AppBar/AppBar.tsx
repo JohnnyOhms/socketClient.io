@@ -25,7 +25,7 @@ const AppNavBar = () => {
             Socket.io Client
           </Typography>
           <form className="search-bar">
-            <input type="text" placeholder="Server" />
+            <input type="text" placeholder="Server address" />
             <button className="search-icon" style={{ cursor: "pointer" }}>
               connect
             </button>

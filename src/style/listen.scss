@@ -14,11 +14,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(28, 117, 226);
+    background-color: $color-primary;
     /* color of the scroll thumb */
     border-radius: 30px;
     /* roundness of the scroll thumb */
-    border: 3px solid rgb(28, 117, 226);
+    border: 3px solid $color-primary;
     /* creates padding around scroll thumb */
   }
 }
@@ -47,7 +47,7 @@
     outline: none;
     border: none;
     padding: 0.6rem 0.6rem;
-    background-color: rgb(28, 117, 226);
+    background-color: $color-primary;
     color: white;
     border-radius: 0 6px 6px 0;
     cursor: pointer;

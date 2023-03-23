@@ -40,7 +40,7 @@ const ListenEvent = () => {
       </div>
 
       <form className="listen-bar">
-        <input type="text" placeholder="event to listen" />
+        <input type="text" placeholder="event to listen" required />
         <button className="listen-btn">Add</button>
       </form>
     </div>

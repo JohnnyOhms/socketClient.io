@@ -1,0 +1,17 @@
+.btn-emit {
+  margin: 15px 0 9px 0;
+  height: 40px;
+  width: 100%;
+
+  .emit-btn {
+    width: 20%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 0.6rem 0.6rem;
+    background-color: $color-primary;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

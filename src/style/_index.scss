@@ -1,9 +1,16 @@
+$color-primary: #1c75e2;
+// $color-primary: #9b5013;
+// $color-primary: rgb(69, 185, 69);
+// $color-primary: rgb(217, 74, 22);
+
 @import "@fontsource/roboto/300.css";
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/500.css";
 @import "@fontsource/roboto/700.css";
 @import "./Appbar.scss";
 @import "./listen.scss";
+@import "./emit.scss";
+@import "./display.scss";
 
 * {
   margin: 0;
