@@ -3,6 +3,7 @@
 @import "@fontsource/roboto/500.css";
 @import "@fontsource/roboto/700.css";
 @import "./Appbar.scss";
+@import "./listen.scss";
 
 * {
   margin: 0;
@@ -12,4 +13,5 @@
 
 body {
   overflow: hidden;
+  background-color: grey;
 }

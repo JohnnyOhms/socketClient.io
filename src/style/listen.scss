@@ -1,0 +1,55 @@
+.listen-event {
+  margin-top: 40px;
+  height: 60%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: grey;
+    /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(28, 117, 226);
+    /* color of the scroll thumb */
+    border-radius: 30px;
+    /* roundness of the scroll thumb */
+    border: 3px solid rgb(28, 117, 226);
+    /* creates padding around scroll thumb */
+  }
+}
+
+.listen-bar {
+  position: absolute;
+  bottom: 15px;
+  width: 22rem;
+
+  input {
+    width: 80%;
+    padding: 0.6rem 0.6rem;
+    border: none;
+    outline: none;
+    background: white;
+    color: black;
+    border-radius: 6px 0 0 6px;
+  }
+
+  input:focus {
+    border: 3px solid rgb(28, 117, 226);
+  }
+
+  button {
+    width: 20%;
+    outline: none;
+    border: none;
+    padding: 0.6rem 0.6rem;
+    background-color: rgb(28, 117, 226);
+    color: white;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+  }
+}

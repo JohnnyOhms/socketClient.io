@@ -6,9 +6,8 @@ import AppNavBar from "./component/AppBar/AppBar";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1A2027",
+      main: "#1c1919ca",
     },
-    // mode: "dark",
   },
 });
 

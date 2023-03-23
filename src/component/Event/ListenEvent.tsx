@@ -13,13 +13,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ListenedItem = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#9b5013",
+  // backgroundColor: "#9b5013",
+  backgroundColor: " rgb(28, 117, 226)",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   color: "white",
   width: "80%",
   display: "flex",
   margin: theme.spacing(1),
+  justifyContent: "space-between",
 }));
 
 const ListenEvent = () => {
@@ -28,46 +30,18 @@ const ListenEvent = () => {
       <Stack>
         <Item> Your Event</Item>
       </Stack>
-      <div
-        style={{
-          marginTop: "40px",
-          height: "100%",
-        }}
-      >
+      <div className="listen-event">
         <Stack>
           <ListenedItem>
             joined_room
-            <CancelIcon
-              sx={{
-                margin: "auto",
-                position: "absolute",
-                right: 90,
-                cursor: "pointer",
-              }}
-            />
+            <CancelIcon />
           </ListenedItem>
         </Stack>
       </div>
 
-      <form
-        className="search-bar"
-        id="add-bar"
-        style={{
-          position: "absolute",
-          bottom: 10,
-          width: "21rem",
-        }}
-      >
-        <input type="text" placeholder="" style={{ width: "100%" }} />
-        <button
-          className="search-icon"
-          style={{
-            cursor: "pointer",
-            backgroundColor: "#1c1919ca",
-          }}
-        >
-          Add
-        </button>
+      <form className="listen-bar">
+        <input type="text" placeholder="event to listen" />
+        <button className="listen-btn">Add</button>
       </form>
     </div>
   );
