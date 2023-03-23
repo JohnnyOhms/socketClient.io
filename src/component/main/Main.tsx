@@ -13,14 +13,15 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
   height: "100vh",
+  marginTop: 4,
 }));
 
 const Main = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid xs={3}>
-          <Item>
+          <Item sx={{ background: "grey" }}>
             <EmitEvent />
           </Item>
         </Grid>
@@ -30,7 +31,7 @@ const Main = () => {
           </Item>
         </Grid>
         <Grid xs={3}>
-          <Item>
+          <Item sx={{ background: "grey" }}>
             <ListenEvent />
           </Item>
         </Grid>
