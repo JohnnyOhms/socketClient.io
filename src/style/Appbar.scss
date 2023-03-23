@@ -37,3 +37,15 @@
   padding: 10px;
   font-size: medium;
 }
+
+.social {
+  margin: auto;
+  position: absolute;
+  right: 20px;
+
+  & > * {
+    margin: 0 10px;
+    cursor: pointer;
+    color: white;
+  }
+}
