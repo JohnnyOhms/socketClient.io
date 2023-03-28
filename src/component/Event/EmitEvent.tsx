@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
@@ -6,6 +6,8 @@ import Select from "react-select";
 import Typography from "@mui/material/Typography";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+import { useAppDispatch } from "../../hooks/hooks";
+import { emitEventFunc } from "../../slice/index";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor:
@@ -24,15 +26,59 @@ const options = [
 ];
 
 const EmitEvent = () => {
-  const [selected, setSelected] = useState<object | null>(null);
+  const [selected, setSelected] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+  const [input, setInput] = useState<string>("");
   const [code, setCode] = useState("");
+  const [data, setData] = useState<any>(null);
   const onChange = useCallback((value: string, viewUpdate: any) => {
-    console.log(value);
     setCode(value);
   }, []);
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (selected) {
+      switch (selected.value) {
+        case "string":
+          setCode('""');
+          break;
+        case "number":
+          setCode("1234");
+          break;
+        case "object":
+          setCode("{}");
+          break;
+        case "array":
+          setCode("[]");
+          break;
+
+        default:
+          break;
+      }
+    }
+  }, [selected]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!code) {
+      return alert("input message to emit to server");
+    }
+
+    const emitObj = {
+      emitName: input,
+      content: JSON.stringify(code),
+      data: selected?.value,
+      time: Date.now(),
+    };
+
+    dispatch(emitEventFunc(emitObj));
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <Stack>
         <Item> Emit Event</Item>
       </Stack>
@@ -49,6 +95,8 @@ const EmitEvent = () => {
           type="text"
           placeholder=""
           required
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
           style={{ width: "100%", padding: "10px", borderRadius: "5px" }}
         />
       </Stack>
@@ -77,20 +125,22 @@ const EmitEvent = () => {
         options={options}
       />
 
-      <div style={{ marginTop: "20px" }}>
-        <CodeMirror
-          value={code}
-          height="200px"
-          extensions={[javascript({ jsx: true })]}
-          onChange={onChange}
-          theme="dark"
-        />
-      </div>
+      {selected?.value && (
+        <div style={{ marginTop: "20px" }}>
+          <CodeMirror
+            value={code}
+            height="200px"
+            extensions={[javascript({ jsx: true })]}
+            onChange={onChange}
+            theme="dark"
+          />
+        </div>
+      )}
 
       <div className="btn-emit">
         <button className="emit-btn">Emit</button>
       </div>
-    </div>
+    </form>
   );
 };
 
