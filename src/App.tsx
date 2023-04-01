@@ -11,7 +11,7 @@ const theme = createTheme({
   },
 });
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -20,6 +20,6 @@ function App() {
       </ThemeProvider>
     </div>
   );
-}
+};
 
 export default App;
