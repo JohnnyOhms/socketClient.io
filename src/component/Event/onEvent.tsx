@@ -2,7 +2,9 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { onEventFunc, updateOnEventItems } from "../../slice";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor:
@@ -28,9 +30,17 @@ const ListenedItem = styled(Paper)(({ theme }) => ({
 const OnEvent = () => {
   const [value, setValue] = useState<string>("");
   const [items, setItems] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
+  const socket = useAppSelector((state) => state.main.socket);
+
+  useEffect(() => {
+    dispatch(updateOnEventItems(items));
+    dispatch(onEventFunc("work"));
+  }, [items]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // dispatch(onEventFunc("greet"));
     setItems((prev) => {
       return [...prev, value];
     });

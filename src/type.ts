@@ -2,27 +2,26 @@ export interface IemitObject {
   type: string;
   name: string;
   content: any;
-  time: Date;
-  data: string;
+  time: String;
+  data: any;
 }
 export interface IonEventObj {
   type: string;
   name: string;
   content: any;
-  time: Date;
+  time: any;
 }
 
-type emitEvents = [IemitObject];
-type onEvents = [IonEventObj];
-
-type IemitEvents<T> = emitEvents | [];
-type IonEvents<T> = onEvents | [];
-
-type Ievents = emitEvents | onEvents | [];
+export type emitEvents = IemitObject[];
+type onEvents = IonEventObj[];
+type Ievents = emitEvents | onEvents;
+type IeventItems = string[] | null;
 
 export interface Istate {
+  socket: any;
   Events: Ievents;
-  emitEvent: IemitEvents<[]>;
-  onEvent: IonEvents<[]>;
+  emitEvent: emitEvents;
+  onEvent: onEvents;
   isConnected: boolean;
+  onEventItems: IeventItems;
 }

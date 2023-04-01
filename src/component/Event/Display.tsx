@@ -7,13 +7,13 @@ import { emitEvents } from "../../type";
 
 const Display = () => {
   const value = 12345;
-  const event = useAppSelector((state) => state.main.emitEvent);
-  const [emitData, setEmitData] = useState<emitEvents>([]);
+  const events = useAppSelector((state) => state.main.emitEvent);
+  const [displayData, setdisplayData] = useState<emitEvents>([]);
   const scrollRef = useRef();
 
   useEffect(() => {
-    setEmitData(event);
-  }, [event]);
+    setdisplayData(events);
+  }, [events]);
   return (
     <div className="display-section">
       <div className="btn-emit">
@@ -29,36 +29,67 @@ const Display = () => {
           display: "flex",
         }}
       >
-        {emitData &&
-          emitData.map((item, index) => {
+        {displayData &&
+          displayData.map((item, index) => {
             return (
-              <>
-                <div className="align-mssg">
-                  <span
-                    style={{
-                      visibility: "hidden",
-                    }}
-                  >
-                    aligned_hidden
-                  </span>
-                  <div className="display-mssg" key={index}>
-                    <Stack sx={{ height: "70px", padding: "4px 7px" }}>
-                      <p>{Date.now()}</p>
-                      <p>{item.name}</p>
-                      <p>{item.data}</p>
-                    </Stack>
-                    <Stack>
-                      <CodeMirror
-                        value={item.content}
-                        height="150px"
-                        extensions={[javascript({ jsx: true })]}
-                        theme="dark"
-                        readOnly={true}
-                      />
-                    </Stack>
-                  </div>
+              <div className="align-mssg" key={index}>
+                <span
+                  style={{
+                    visibility: "hidden",
+                  }}
+                >
+                  aligned_hidden
+                </span>
+                <div className="display-mssg">
+                  <Stack sx={{ height: "70px", padding: "4px 7px" }}>
+                    <p style={{ fontStyle: "italic" }}>
+                      <span
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontStyle: "normal",
+                        }}
+                      >
+                        Date:{" "}
+                      </span>
+                      {item.time}
+                    </p>
+                    <p style={{ fontStyle: "italic" }}>
+                      <span
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontStyle: "normal",
+                        }}
+                      >
+                        Emit:{" "}
+                      </span>
+                      {item.name}
+                    </p>
+                    <p style={{ fontStyle: "italic" }}>
+                      <span
+                        style={{
+                          color: "white",
+                          fontWeight: "bold",
+                          fontStyle: "normal",
+                        }}
+                      >
+                        Data:{" "}
+                      </span>
+                      {item.data}
+                    </p>
+                  </Stack>
+                  <Stack>
+                    <CodeMirror
+                      value={item.content}
+                      height="150px"
+                      extensions={[javascript({ jsx: true })]}
+                      theme="dark"
+                      readOnly={true}
+                    />
+                  </Stack>
                 </div>
-              </>
+              </div>
             );
           })}
 

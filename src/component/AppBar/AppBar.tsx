@@ -7,14 +7,28 @@ import RssFeedIcon from "@mui/icons-material/RssFeed";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { connectSocket } from "../../slice";
 
 const AppNavBar = () => {
+  const [value, setValue] = useState<string>("");
+  const dispatch = useAppDispatch();
+  const isConnected = useAppSelector((state) => state.main.isConnected);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!value) {
+      return alert("input a socket address");
+    }
+    dispatch(connectSocket(value));
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start" color="inherit" aria-label="menu">
-            <RssFeedIcon />
+            <RssFeedIcon sx={{ color: isConnected ? "green" : "red" }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -27,8 +41,14 @@ const AppNavBar = () => {
           >
             Socket.io Client
           </Typography>
-          <form className="search-bar">
-            <input type="text" placeholder="Server address" />
+          <form className="search-bar" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Server address"
+              required
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
             <button className="search-icon" style={{ cursor: "pointer" }}>
               connect
             </button>

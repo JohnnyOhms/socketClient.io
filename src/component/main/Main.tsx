@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import EmitEvent from "../Event/EmitEvent";
 import Display from "../Event/Display";
-import ListenEvent from "../Event/ListenEvent";
+import OnEvent from "../Event/onEvent";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -32,7 +32,7 @@ const Main = () => {
         </Grid>
         <Grid xs={3}>
           <Item sx={{ background: "grey" }}>
-            <ListenEvent />
+            <OnEvent />
           </Item>
         </Grid>
       </Grid>
