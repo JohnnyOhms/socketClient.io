@@ -8,6 +8,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { useAppDispatch } from "../../hooks/hooks";
 import { emitEventFunc } from "../../slice/index";
+import currentDate from "../../newDate";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor:
@@ -32,7 +33,6 @@ const EmitEvent = () => {
   } | null>(null);
   const [input, setInput] = useState<string>("");
   const [code, setCode] = useState("");
-  const [data, setData] = useState<any>(null);
   const onChange = useCallback((value: string, viewUpdate: any) => {
     setCode(value);
   }, []);
@@ -71,7 +71,7 @@ const EmitEvent = () => {
       emitName: input,
       content: JSON.stringify(code),
       data: selected?.value,
-      time: Date.now(),
+      time: currentDate(),
     };
 
     dispatch(emitEventFunc(emitObj));
