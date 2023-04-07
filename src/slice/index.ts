@@ -42,7 +42,13 @@ const mainSlice = createSlice({
     },
     onEventFunc: (state, action) => {
       if (!state.isConnected) return;
-
+      if (
+        state.socket._callbacks !== null &&
+        // action.payload in state.socket._callbacks
+        state.socket._callbacks.hasOwnProperty(action.payload)
+      ) {
+        return alert("callback obj found");
+      }
       state.socket.on(action.payload, (data: any) => {
         const onObj: IonEventObj = {
           type: "on",
@@ -50,6 +56,7 @@ const mainSlice = createSlice({
           content: data,
           time: currentDate(),
         };
+        alert(data);
         state.onEvent.push(onObj);
         mainSlice.caseReducers.displayEvents(state, action);
       });

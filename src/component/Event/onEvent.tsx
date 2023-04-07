@@ -35,12 +35,31 @@ const OnEvent = () => {
 
   useEffect(() => {
     dispatch(updateOnEventItems(items));
-    dispatch(onEventFunc("work"));
+
+    if (items[0]) {
+      dispatch(onEventFunc(items[0]));
+    }
+
+    if (items[1]) {
+      dispatch(onEventFunc(items[1]));
+    }
+
+    if (items[2]) {
+      dispatch(onEventFunc(items[2]));
+    }
+
+    if (items[3]) {
+      dispatch(onEventFunc(items[3]));
+    }
+
+    if (items[4]) {
+      dispatch(onEventFunc(items[4]));
+    }
   }, [items]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // dispatch(onEventFunc("greet"));
+
     setItems((prev) => {
       return [...prev, value];
     });
@@ -48,9 +67,10 @@ const OnEvent = () => {
   };
 
   const handleDelete = (id: number) => {
+    console.log(id);
     let newItems: string[] = [];
     newItems = items;
-    newItems.splice(id, 1);
+    // newItems.splice(id, 1);
     setItems((prev) => {
       return [...newItems];
     });
@@ -64,13 +84,13 @@ const OnEvent = () => {
       <div className="listen-event">
         <Stack>
           {items &&
-            items.map((d, i) => {
+            items.map((item, index) => {
               return (
-                <ListenedItem key={i}>
-                  {d}
+                <ListenedItem key={index}>
+                  {item}
                   <CancelIcon
                     sx={{ cursor: "pointer" }}
-                    onClick={() => handleDelete(i)}
+                    onClick={() => handleDelete(index)}
                   />
                 </ListenedItem>
               );
