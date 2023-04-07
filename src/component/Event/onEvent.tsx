@@ -67,10 +67,9 @@ const OnEvent = () => {
   };
 
   const handleDelete = (id: number) => {
-    console.log(id);
     let newItems: string[] = [];
-    newItems = items;
-    // newItems.splice(id, 1);
+    newItems = [...newItems, ...items];
+    newItems.splice(id, 1);
     setItems((prev) => {
       return [...newItems];
     });
