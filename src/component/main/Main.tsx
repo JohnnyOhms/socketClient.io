@@ -20,17 +20,17 @@ const Main = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
-        <Grid xs={3}>
-          <Item sx={{ background: "grey" }}>
+        <Grid xs={12} sm={12} md={3}>
+          <Item sx={{ background: "grey", height: "100%" }}>
             <EmitEvent />
           </Item>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={12} md={6}>
           <Item>
             <Display />
           </Item>
         </Grid>
-        <Grid xs={3}>
+        <Grid xs={12} sm={12} md={3}>
           <Item sx={{ background: "grey" }}>
             <OnEvent />
           </Item>
