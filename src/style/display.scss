@@ -38,3 +38,15 @@
     border-radius: 0 20px 0 0;
   }
 }
+
+@media screen and (min-width: 1025px) {
+  .grid-wrapper {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .grid-wrapper {
+    height: 100vh;
+  }
+}

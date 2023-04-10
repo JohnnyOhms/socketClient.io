@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
-  height: "100vh",
+  height: "100%",
   marginTop: 4,
 }));
 
@@ -21,14 +21,18 @@ const Main = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
         <Grid xs={12} sm={12} md={3}>
-          <Item sx={{ background: "grey", height: "100%" }}>
-            <EmitEvent />
-          </Item>
+          <div className="grid-wrapper">
+            <Item sx={{ background: "grey" }}>
+              <EmitEvent />
+            </Item>
+          </div>
         </Grid>
         <Grid xs={12} sm={12} md={6}>
-          <Item>
-            <Display />
-          </Item>
+          <div className="grid-wrapper">
+            <Item>
+              <Display />
+            </Item>
+          </div>
         </Grid>
         <Grid xs={12} sm={12} md={3}>
           <Item sx={{ background: "grey" }}>
