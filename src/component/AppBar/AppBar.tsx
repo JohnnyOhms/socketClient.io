@@ -26,7 +26,7 @@ const AppNavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" sx={{ background: "green", display: "flex" }}>
           <IconButton edge="start" color="inherit" aria-label="menu">
             <RssFeedIcon sx={{ color: isConnected ? "green" : "red" }} />
           </IconButton>
@@ -41,18 +41,20 @@ const AppNavBar = () => {
           >
             Socket.io Client
           </Typography>
-          <form className="search-bar" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Server address"
-              required
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />
-            <button className="search-icon" style={{ cursor: "pointer" }}>
-              connect
-            </button>
-          </form>
+          <div id="form-section">
+            <form className="search-bar" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Server address"
+                required
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+              <button className="search-icon" style={{ cursor: "pointer" }}>
+                connect
+              </button>
+            </form>
+          </div>
 
           <div className="social">
             <a href="">
