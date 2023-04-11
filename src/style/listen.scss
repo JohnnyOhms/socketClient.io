@@ -1,6 +1,6 @@
 .listen-event {
   margin-top: 40px;
-  height: 60%;
+  max-height: 60%;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -24,9 +24,8 @@
 }
 
 .listen-bar {
-  position: absolute;
-  bottom: 15px;
-  width: 22rem;
+  bottom: 0;
+  margin: 1rem auto;
 
   input {
     width: 80%;
@@ -51,5 +50,17 @@
     color: white;
     border-radius: 0 6px 6px 0;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .listen-event {
+    max-height: 30%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .listen-event {
+    max-height: 20%;
   }
 }

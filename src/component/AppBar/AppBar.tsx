@@ -26,7 +26,7 @@ const AppNavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar variant="dense" sx={{ background: "green", display: "flex" }}>
+        <Toolbar variant="dense" sx={{ display: "flex" }}>
           <IconButton edge="start" color="inherit" aria-label="menu">
             <RssFeedIcon sx={{ color: isConnected ? "green" : "red" }} />
           </IconButton>

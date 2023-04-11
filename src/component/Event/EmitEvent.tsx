@@ -97,7 +97,7 @@ const EmitEvent = () => {
           required
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          style={{ width: "100%", padding: "10px", borderRadius: "5px" }}
+          id="emit-input"
         />
       </Stack>
 

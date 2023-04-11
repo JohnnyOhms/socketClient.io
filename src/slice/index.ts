@@ -12,6 +12,8 @@ const initialState: Istate = {
   onEventItems: null,
 };
 
+const arrayTest: any = [];
+
 const mainSlice = createSlice({
   name: "mainSlice",
   initialState,
@@ -42,13 +44,10 @@ const mainSlice = createSlice({
     },
     onEventFunc: (state, action) => {
       if (!state.isConnected) return;
-      if (
-        state.socket._callbacks !== null &&
-        // action.payload in state.socket._callbacks
-        state.socket._callbacks.hasOwnProperty(action.payload)
-      ) {
-        return alert("callback obj found");
-      }
+      // if (state.socket._callbacks !== null) {
+
+      //   return alert("callback obj found");
+      // }
       state.socket.on(action.payload, (data: any) => {
         const onObj: IonEventObj = {
           type: "on",
@@ -56,9 +55,10 @@ const mainSlice = createSlice({
           content: data,
           time: currentDate(),
         };
-        alert(data);
-        state.onEvent.push(onObj);
-        mainSlice.caseReducers.displayEvents(state, action);
+        // state.onEvent.push(onObj);
+        arrayTest.push(onObj);
+        console.log(arrayTest);
+        mainSlice.caseReducers.displayEvents(state, arrayTest);
       });
 
       // if (state.onEventItems) {
@@ -82,8 +82,10 @@ const mainSlice = createSlice({
     },
     displayEvents: (state, action) => {
       // if (!state.isConnected) return;
-      state.Events = [...state.Events, ...state.emitEvent, ...state.onEvent];
-      return { ...state };
+      // state.Events = [...state.Events, ...state.emitEvent, ...action.payload];
+      state.Events.push(arrayTest);
+      console.log(action.payload);
+      // return { ...state };
     },
     isConnected: (state, action) => {
       state.socket.emit("joined", true);

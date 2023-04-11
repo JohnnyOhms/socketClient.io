@@ -16,17 +16,16 @@ const Display = () => {
   }, [events]);
   return (
     <div className="display-section">
-      <div className="btn-emit">
-        <button className="emit-btn" style={{ width: "10%" }}>
-          Clear
-        </button>
+      <div className="btn-emit" style={{ width: "70%" }}>
+        <button className="emit-btn">Clear</button>
       </div>
       <hr />
       <Stack
         width="100%"
-        style={{
+        sx={{
           marginTop: "10px",
           display: "flex",
+          maxHeight: { xs: "180px", sm: "250px", md: "100%" },
         }}
       >
         {displayData &&

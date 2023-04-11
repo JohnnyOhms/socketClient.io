@@ -1,3 +1,9 @@
+#emit-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .btn-emit {
   margin: 15px 0 9px 0;
   height: 40px;
@@ -13,5 +19,17 @@
     color: white;
     border-radius: 6px;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #emit-input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #emit-input {
+    width: 100%;
   }
 }

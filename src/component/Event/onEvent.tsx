@@ -76,7 +76,7 @@ const OnEvent = () => {
   };
 
   return (
-    <div style={{ height: "100%", width: "100%" }}>
+    <div style={{ height: "50vh", width: "100%" }}>
       <Stack>
         <Item> Your Event</Item>
       </Stack>

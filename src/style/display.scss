@@ -1,5 +1,6 @@
 .display-section {
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
   width: 100%;
 
@@ -30,23 +31,11 @@
   }
 
   .display-mssg {
-    width: 35%;
+    width: 50%;
     background-color: grey;
     color: white;
     margin: 15px;
     display: inline-block;
     border-radius: 0 20px 0 0;
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  .grid-wrapper {
-    height: 100vh;
-  }
-}
-
-@media screen and (min-width: 1281px) {
-  .grid-wrapper {
-    height: 100vh;
   }
 }

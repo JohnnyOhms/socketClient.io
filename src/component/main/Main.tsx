@@ -14,20 +14,21 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   height: "100%",
   marginTop: 4,
+  background: "inherit",
 }));
 
 const Main = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
-        <Grid xs={12} sm={12} md={3}>
+        <Grid xs={12} sm={6} md={3}>
           <div className="grid-wrapper">
             <Item sx={{ background: "grey" }}>
               <EmitEvent />
             </Item>
           </div>
         </Grid>
-        <Grid xs={12} sm={12} md={6}>
+        <Grid xs={12} sm={6} md={6}>
           <div className="grid-wrapper">
             <Item>
               <Display />

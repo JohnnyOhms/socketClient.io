@@ -19,6 +19,18 @@ $color-primary: #1c75e2;
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: grey;
+}
+
+@media screen and (min-width: 1025px) {
+  .grid-wrapper {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .grid-wrapper {
+    height: 100vh;
+  }
 }

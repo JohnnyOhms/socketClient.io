@@ -21,7 +21,8 @@ export interface Istate {
   socket: any;
   Events: Ievents;
   emitEvent: emitEvents;
-  onEvent: onEvents;
+  // onEvent: onEvents;
+  onEvent: any;
   isConnected: boolean;
   onEventItems: IeventItems;
 }
