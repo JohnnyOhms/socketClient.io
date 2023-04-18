@@ -55,9 +55,21 @@ const mainSlice = createSlice({
           content: data,
           time: currentDate(),
         };
-        // state.onEvent.push(onObj);
+
         arrayTest.push(onObj);
-        console.log(arrayTest);
+
+        const newArray = new Map();
+
+        arrayTest.forEach((item: any) => {
+          const propertyValue = item["name"];
+          newArray.has(propertyValue)
+            ? newArray.set(propertyValue, {
+                ...item,
+                ...newArray.get(propertyValue),
+              })
+            : newArray.set(propertyValue, item);
+        });
+        state.onEvent.push(Array.from(newArray.values()));
         mainSlice.caseReducers.displayEvents(state, arrayTest);
       });
 
@@ -82,9 +94,8 @@ const mainSlice = createSlice({
     },
     displayEvents: (state, action) => {
       // if (!state.isConnected) return;
-      // state.Events = [...state.Events, ...state.emitEvent, ...action.payload];
-      state.Events.push(arrayTest);
-      console.log(action.payload);
+      state.Events = [...state.Events, ...state.emitEvent, ...action.payload];
+      console.log(state.Events);
       // return { ...state };
     },
     isConnected: (state, action) => {
